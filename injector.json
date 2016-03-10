@@ -1,0 +1,11 @@
+{
+  "stylevendors": [
+    "@bower/square-link/square-link.scss"
+  ],
+  "stylegui": [
+    "@bower/square-link/gui/gui.scss"
+  ],
+  "gui": [
+    "@bower/square-link/gui/gui.html.twig"
+  ]
+}

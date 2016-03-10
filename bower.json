@@ -1,0 +1,22 @@
+{
+  "name": "square-link",
+  "homepage": "https://github.com/AppVentus/square-link-brick",
+  "authors": [
+    "Loïc Goyet <loic@appventus.com>"
+  ],
+  "description": "HTML & CSS library for square-link",
+  "main": "square-link.scss",
+  "moduleType": [],
+  "keywords": [
+    "css",
+    "html"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
