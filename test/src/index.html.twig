@@ -1,9 +1,199 @@
 <html>
     <head>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="style.css" charset="utf-8">
     </head>
 
     <body>
-        hello world !
+        <ul class="square-grid">
+            {% for item in 1..9 %}
+                <li class="square-grid__col">
+                    {% if loop.index is odd %}
+                        {% embed '../../square-link.html.twig' with { hover: { effect: 'fadein-and-scale', color: 'green' }, ribbon: 'ribbon' } %}
+                        {% endembed %}
+                    {% else %}
+                        {% embed '../../square-link.html.twig' with { hover: { effect: '3d-sign', red: 'red' } } %}
+                        {% endembed %}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Sass parameters</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Options</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th>$sl--color</th>
+                    <td>color</td>
+                    <td>Color and fill for the contents</td>
+                    <td>rgb(61, 50, 76)</td>
+                </tr>
+
+                <tr>
+                    <th>$sl--color-hover</th>
+                    <td>color</td>
+                    <td>Color and fill on hover</td>
+                    <td>rgb(255, 255, 255)</td>
+                </tr>
+
+                <tr>
+                    <th>$sl--background-color</th>
+                    <td>color</td>
+                    <td>Background color of the element</td>
+                    <td>rgb(255, 255, 255)</td>
+                </tr>
+
+                <tr>
+                    <th>$sl--border-color</th>
+                    <td>color</td>
+                    <td>Border color of the element</td>
+                    <td>rgb(226, 226, 226)</td>
+                </tr>
+
+                <tr>
+                    <th>$sl--border-radius</th>
+                    <td>unit</td>
+                    <td>Border radius of the element</td>
+                    <td>3px</td>
+                </tr>
+
+                <tr>
+                    <th>$sl--border-width</th>
+                    <td>unit</td>
+                    <td>Border width of the element</td>
+                    <td>1px</td>
+                </tr>
+
+                <tr>
+                    <th>$sl--transition-duration</th>
+                    <td>time</td>
+                    <td>Transition duration for the different animations</td>
+                    <td>300ms</td>
+                </tr>
+
+                <tr>
+                    <th>$sl--transition-timing-function</th>
+                    <td>timing-function</td>
+                    <td>Timing duration for the different animations</td>
+                    <td>ease</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-middle--gutter</th>
+                    <td>unit</td>
+                    <td>Spacing between the middle content</td>
+                    <td>25px</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-middle-upper--visible</th>
+                    <td>string ('visible'|'hover'|'none')</td>
+                    <td>
+                        When the upper_middle_content block is visible
+
+                        <ul>
+                            <li>'visible' means visible everytime</li>
+                            <li>'hover' means visible on hover</li>
+                            <li>'none' means never visible</li>
+                        </ul>
+                    </td>
+                    <td>'none'</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-middle-under--visible</th>
+                    <td>string ('visible'|'hover'|'none')</td>
+                    <td>
+                        When the under_middle_content block is visible
+
+                        <ul>
+                            <li>'visible' means visible everytime</li>
+                            <li>'hover' means visible on hover</li>
+                            <li>'none' means never visible</li>
+                        </ul>
+                    </td>
+                    <td>'hover'</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-middle-upper--style</th>
+                    <td>map</td>
+                    <td>Map of style rules to add to the upper_middle_content</td>
+                    <td>('font-size': 13px, 'letter-spacing': 1.44px, 'text-transform': uppercase,)</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-middle-under--style</th>
+                    <td>map</td>
+                    <td>Map of style rules to add to the under_middle_content</td>
+                    <td>('font-size': 13px, 'letter-spacing': 1.44px, 'text-transform': uppercase,)</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-hoverbackdrop--background-color-default</th>
+                    <td>color</td>
+                    <td>When no color is passed in the embed as parameter, the background color on hover</td>
+                    <td>rgb(51, 51, 51)</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-hoverbackdrop-3dsign--start-rotate-z</th>
+                    <td>deg</td>
+                    <td>On the 3d-sign effect, the deg start for the hover animation</td>
+                    <td>-45deg</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-hoverbackdrop-fadeinandscale--start-scale</th>
+                    <td>number (0 to 1)</td>
+                    <td>On the fadein-and-scale, the scale start for the hover animation</td>
+                    <td>0.75</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-ribbon--background-color</th>
+                    <td>color</td>
+                    <td>The background color for the ribbon</td>
+                    <td>rgb(244, 161, 96)</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-ribbon--margin-right</th>
+                    <td>unit</td>
+                    <td>The margin-right for the ribbon</td>
+                    <td>68px</td>
+                </tr>
+
+                <tr>
+                    <th>$sl-ribbon--style</th>
+                    <td>map</td>
+                    <td>Map of style rules to add to the ribbon</td>
+                    <td>('padding': 6px, 'font-size': 14px, 'line-height': 1.285714286, 'color': rgb(255, 255, 255),)</td>
+                </tr>
+
+                <tr>
+                    <th>$sg--gutter</th>
+                    <td>unit</td>
+                    <td>The gutter space for the grid</td>
+                    <td>20px</td>
+                </tr>
+
+                <tr>
+                    <th>$sg-item--min-size</th>
+                    <td>unit</td>
+                    <td>The minimum width acceptable for a item in the grid</td>
+                    <td>210px</td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>

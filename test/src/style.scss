@@ -1,1 +1,24 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+// scss-lint:disable ColorVariable
+$colors: (
+  'red': rgb(216, 59, 105),
+  'green': rgb(3, 191, 150),
+);
+// scss-lint:enable ColorVariable
+$color-helper--enable--state-hover: true;
+
+@import 'bower_components/aspect-ratio-mixin/aspect-ratio';
+@import 'bower_components/color-helper/color-helper';
 @import '../../square-link';
+
+body {
+  margin: 20px;
+  margin-bottom: 0;
+}
+
+th {
+  text-align: left;
+}

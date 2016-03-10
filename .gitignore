@@ -34,3 +34,4 @@ node_modules
 
 # Test dest
 test/dest
+test/src/bower_components

@@ -1,0 +1,5 @@
+@mixin when-sl-hovered {
+  .square-link:hover & {
+    @content;
+  }
+}

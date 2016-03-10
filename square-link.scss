@@ -1,7 +1,234 @@
+@import 'sass-partials/parameters';
+@import 'sass-partials/get-hypotenuse';
+@import 'sass-partials/context';
+@import 'sass-partials/upper-visible';
+@import 'sass-partials/apply-map-properties';
+
 /**
  * square-link
+ * ===========
  */
 
-.square-link {
-  
+.square-link,
+%square-link {
+  @include aspect-ratio(1);
+  display: block;
+  background-color: $sl--background-color;
+  border-width: $sl--border-width;
+  border-style: solid;
+  border-color: $sl--border-color;
+  border-radius: $sl--border-radius;
+  position: relative;
+  text-align: center;
+  perspective: 1000px;
+  color: $sl--color;
+  fill: $sl--color;
+
+  &,
+  * {
+    box-sizing: border-box;
+  }
+
+  * {
+    color: inherit;
+    fill: inherit;
+  }
+}
+
+
+/**
+ * square-link__middle
+ * -------------------
+ */
+
+.square-link__middle {
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include when-sl-hovered {
+    color: $sl--color-hover;
+    fill: $sl--color-hover;
+  }
+}
+
+.square-link__middle,
+.square-link__upper-middle,
+.square-link__under-middle {
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding-left: $sl-middle--gutter;
+  padding-right: $sl-middle--gutter;
+  transition-property: color, fill;
+  transition-duration: $sl--transition-duration;
+  transition-timing-function: $sl--transition-timing-function;
+}
+
+.square-link__upper-middle {
+  @include apply-map-properties ($sl-middle-upper--style);
+  @include sl-middle-add-visible ($sl-middle-upper--visible);
+  bottom: 100%;
+  margin-bottom: $sl-middle--gutter;
+}
+
+.square-link__under-middle {
+  @include apply-map-properties ($sl-middle-under--style);
+  @include sl-middle-add-visible ($sl-middle-under--visible);
+  top: 100%;
+  margin-top: $sl-middle--gutter;
+}
+
+/**
+ * square-link__hover-backdrop
+ * ---------------------------
+ */
+
+.square-link__hover-backdrop {
+  position: absolute;
+  top: -$sl--border-width;
+  right: -$sl--border-width;
+  bottom: -$sl--border-width;
+  left: -$sl--border-width;
+  background-color: $sl-hoverbackdrop--background-color-default;
+  will-change: transform;
+  transition-property: transform, opacity;
+  transition-duration: $sl--transition-duration;
+  transition-timing-function: $sl--transition-timing-function;
+  opacity: 0;
+  border-radius: $sl--border-radius;
+
+  @include when-sl-hovered {
+    opacity: 1;
+  }
+}
+
+.square-link__hover-backdrop--3d-sign {
+  transform-origin: top center;
+  transform: rotate3d(1, 0, 0, $sl-hoverbackdrop-3dsign--start-rotate-z);
+  backface-visibility: hidden;
+
+  @include when-sl-hovered {
+    transform: rotate3d(1, 0, 0, 0deg);
+  }
+}
+
+.square-link__hover-backdrop--fadein-and-scale {
+  transform: scale($sl-hoverbackdrop-fadeinandscale--start-scale);
+
+  @include when-sl-hovered {
+    transform: scale(1);
+  }
+}
+
+/**
+ * square-link__ribbon
+ * -------------------
+ */
+
+.square-link__ribbon-wrapper {
+  position: absolute;
+  display: block;
+  top: -$sl--border-width;
+  right: -$sl--border-width;
+  bottom: -$sl--border-width;
+  left: -$sl--border-width;
+  overflow: hidden;
+}
+
+.square-link__ribbon {
+  @include apply-map-properties ($sl-ribbon--style);
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 100%;
+  width: get-hypotenuse($sl-ribbon--margin-right, $sl-ribbon--margin-right);
+  transform-origin: top left;
+  margin-left: -$sl-ribbon--margin-right;
+  transform: rotate(45deg);
+  text-align: center;
+
+  @include when-sl-hovered {
+    color: inherit;
+  }
+
+  &,
+  &::before,
+  &::after {
+    background-color: $sl-ribbon--background-color;
+    transition-property: background-color, color;
+    transition-duration: $sl--transition-duration;
+    transition-timing-function: $sl--transition-timing-function;
+
+    @include when-sl-hovered {
+      background-color: $sl--color-hover;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    z-index: -1;
+  }
+
+  &::before {
+    left: 100%;
+    margin-left: -1px;
+  }
+
+  &::after {
+    right: 100%;
+    margin-right: -1px;
+  }
+}
+
+
+
+/**
+ * square-grid
+ * ===========
+ */
+
+.square-grid {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: floor(-$sg--gutter / 2);
+  margin-right: ceil(-$sg--gutter / 2);
+  padding-bottom: round($sg--gutter / 2);
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+
+
+/**
+ * square-grid__col
+ * ----------------
+ */
+
+@function get-query-min-width($cols) {
+  @return ($sg-item--min-size * $cols) + ($sg--gutter * ($cols - 1));
+}
+
+.square-grid__col {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100%;
+  padding-left: floor($sg--gutter / 2);
+  padding-right: ceil($sg--gutter / 2);
+  margin-bottom: $sg--gutter;
+  box-sizing: border-box;
+
+  @for $cols from 2 through 5 {
+    @media (min-width: get-query-min-width($cols)) {
+      flex-basis: (100% / $cols);
+    }
+  }
 }

@@ -1,0 +1,17 @@
+@mixin sl-middle-add-visible ($visible) {
+  @if $visible == 'none' {
+    display: none;
+  } @elseif $visible == 'hover' {
+    opacity: 0;
+    transition-property: opacity;
+    transition-delay: 0;
+    transition-duration: $sl--transition-duration;
+    transition-timing-function: $sl--transition-timing-function;
+    color: $sl--color-hover;
+    fill: $sl--color-hover;
+
+    @include when-sl-hovered {
+      opacity: 1;
+    }
+  }
+}

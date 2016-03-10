@@ -18,5 +18,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "aspect-ratio-mixin": "^1.0.1",
+    "color-helper": "^1.5.0"
+  }
 }

@@ -1,1 +1,25 @@
-<div class="square-link"></div>
+<a class="square-link color--{{ hover.color|default('red') }}-hover" href="{{ href|default('#') }}">
+    <span class="square-link__hover-backdrop square-link__hover-backdrop--{{ hover.effect|default('fadein-and-scale') }} bg-color--{{ hover.color|default('red') }}"></span>
+
+    {% if ribbon is defined %}
+        <span class="square-link__ribbon-wrapper">
+            <span class="square-link__ribbon">
+                {{ ribbon }}
+            </span>
+        </span>
+    {% endif %}
+
+    <span class="square-link__middle">
+        <span class="square-link__upper-middle">
+            {% block upper_middle_content %}upper middle{% endblock %}
+        </span>
+
+        {% block middle_content %}
+            middle
+        {% endblock %}
+
+        <span class="square-link__under-middle">
+            {% block under_middle_content %}under middle{% endblock %}
+        </span>
+    </span>
+</a>

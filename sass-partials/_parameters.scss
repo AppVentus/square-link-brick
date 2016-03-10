@@ -1,0 +1,46 @@
+$sl--color: rgb(61, 50, 76) !default;
+$sl--color-hover: rgb(255, 255, 255) !default;
+$sl--background-color: rgb(255, 255, 255) !default;
+$sl--border-color: rgb(226, 226, 226) !default;
+$sl--border-radius: 3px !default;
+$sl--border-width: 1px !default;
+$sl--transition-duration: 300ms !default;
+$sl--transition-timing-function: ease !default;
+
+$sl-middle--gutter: 25px !default;
+$sl-middle-upper--visible: 'none' !default; // 'visible'|'hover'|'none'
+$sl-middle-under--visible: 'hover' !default; // 'visible'|'hover'|'none'
+
+$sl-middle-upper--style: (
+  'font-size': 13px,
+  'letter-spacing': 1.44px,
+  'text-transform': uppercase,
+) !default;
+
+$sl-middle-under--style: (
+  'font-size': 13px,
+  'letter-spacing': 1.44px,
+  'text-transform': uppercase,
+) !default;
+
+$sl-hoverbackdrop--background-color-default: rgb(51, 51, 51) !default;
+$sl-hoverbackdrop-3dsign--start-rotate-z: -45deg !default;
+$sl-hoverbackdrop-fadeinandscale--start-scale: 0.75 !default;
+
+$sl-ribbon--background-color: rgb(244, 161, 96) !default;
+$sl-ribbon--margin-right: 68px !default;
+// scss-lint:disable ColorVariable
+$sl-ribbon--style: (
+  'padding': 6px,
+  'font-size': 14px,
+  'line-height': 1.285714286,
+  'color': rgb(255, 255, 255),
+) !default;
+// scss-lint:enable ColorVariable
+
+
+// Grid
+// ====
+
+$sg--gutter: 20px !default;
+$sg-item--min-size: 210px !default;
