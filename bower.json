@@ -1,6 +1,6 @@
 {
-  "name": "trowel-square-link",
-  "homepage": "https://github.com/Trowel/square-link",
+  "name": "silverhold-square-link",
+  "homepage": "https://github.com/silverhold/square-link",
   "authors": [
     "Loïc Goyet <loic@appventus.com>"
   ],
@@ -20,7 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "trowel-bucket": "^1.0.1",
-    "trowel-color": "^1.5.0"
+    "silverhold-bucket": "^1.0.1",
+    "silverhold-color": "^1.5.0"
   }
 }
